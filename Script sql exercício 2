@@ -1,0 +1,28 @@
+use bandtec;
+CREATE TABLE Pessoa (
+    Nome varchar(30),
+    idPessoa int PRIMARY KEY,
+    Profissão varchar(30),
+    Data_de_nascimento date
+);
+CREATE TABLE Gastos (
+    idGasto int PRIMARY KEY,
+    Data date,
+    Valor decimal(5,2),
+    Descrição varchar(30)
+);
+CREATE TABLE realiza (
+    fk_Gastos_idGasto int,
+    fk_Pessoa_idPessoa int
+);
+ 
+ALTER TABLE realiza ADD CONSTRAINT FK_realiza_1
+    FOREIGN KEY (fk_Gastos_idGasto)
+    REFERENCES Gastos (idGasto)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE realiza ADD CONSTRAINT FK_realiza_2
+    FOREIGN KEY (fk_Pessoa_idPessoa)
+    REFERENCES Pessoa (idPessoa)
+    ON DELETE SET NULL;
+select * from realiza;

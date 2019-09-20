@@ -1,0 +1,19 @@
+use bandtec;
+CREATE TABLE Cliente (
+    idCliente int PRIMARY KEY,
+    Nome varchar(40),
+    Sobrenome varchar(40),
+    Idade int,
+    fkDentista int
+);
+CREATE TABLE Dentista (
+    idDentista int PRIMARY KEY,
+    Nome varchar(40),
+    Sobrenome varchar(40)
+);
+insert into Cliente values(101, "Leonardo", "Auad", 22, null);
+delete from Cliente where idCliente = 101;
+ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_2
+    FOREIGN KEY (fkDentista)
+    REFERENCES Dentista (idDentista)
+    ON DELETE RESTRICT;
